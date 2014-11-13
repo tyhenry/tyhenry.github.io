@@ -42,7 +42,10 @@
 				</div>
 
 				<div class="form-container">
-					<form id="signup-form" method="link" action="writer.html">
+					<form id="signup-form" method="post" action="submit-process.php" enctype="multipart/form-data">
+						<!--redirect value-->
+						<input type="hidden" name="redirect_to" value ="writer.html">
+						
 						<input type="text" name="doc-name" value="document title"><br>
 						<label for="doc-deadline">Edit deadline:</label>
 						<input type="date" name="doc-deadline" value="editing deadline (MM/DD/YY)"><br>
@@ -54,7 +57,8 @@
 							<option value="fact-check">Fact Check</option>
 						</select><br>
 						<label for="fileselect">Files to upload:</label>
-						<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+						<!--<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />-->
+						<input type="file" id="fileselect" name="file" size="50" />
 						<div id="submit-button">
 							<button class="btn" id="submit-btn">submit document</button>
 						</div>
