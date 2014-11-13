@@ -1,0 +1,331 @@
+/*fonts*/
+$font-stack: 'Open Sans', sans-serif;
+$fancy-font: 'Quicksand', sans-serif;
+
+/*color scheme*/
+$dark-color: #111111;
+$dark-color-transparent: rgba(17, 17, 17, 0.7);
+$mid-color: #a1a1a1;
+$mid-color-transparent: rgba(161, 161, 161, 0.7);
+$light-color: #ebebeb;
+
+
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+/*inside-border uses box-shadow to create an internal border*/
+@mixin inside-border($width, $color){
+  -webkit-box-shadow: 0 0 0 $width $color;
+     -moz-box-shadow: 0 0 0 $width $color; 
+      -ms-box-shadow: 0 0 0 $width $color; 
+          box-shadow: 0 0 0 $width $color; 
+}
+
+@mixin nav-link-style{
+	display: inline;
+	margin: 0;
+	padding: 0 10px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+
+html {
+	/*I know we're not meant to style the html tag 
+	but it's the only way I could get the full width/height layout
+	to work! Sorry...*/
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font: 1.2em $font-stack;
+	color: $dark-color;
+	background-color: $light-color;
+}
+
+h1 {
+	font-size: 2.2em;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+
+h3 {
+	font-size: 1.2em;
+}
+
+a {
+	text-decoration: none;
+	color: $dark-color;
+
+	&:hover {
+		color: $light-color;
+	}
+}
+
+hr {
+	border: 1px solid $mid-color;
+}
+
+/*button class for button divs and buttons*/
+.btn {
+	display: inline-block;
+	margin: 0 10px;
+	padding: 15px 25px 15px 29px;
+	color: $light-color;
+	background-color: $dark-color;
+	text-transform: uppercase;
+	font-size: 1.1em;
+	letter-spacing: 2px;
+	border: none;
+	@include border-radius (40px);
+	opacity: 0.7;
+	cursor: pointer;
+
+	&:hover {
+		@include inside-border (1px, $dark-color);
+		text-decoration: none;
+		background-color: $mid-color;
+		color: $dark-color;
+	}
+
+	&:active {
+		@include inside-border (2px, $light-color);
+		color: $light-color;
+	}
+}
+
+
+.logo {
+	font-family: $fancy-font;
+	font-weight: 400;
+	text-transform: lowercase;
+}
+
+
+
+#header {
+	z-index: 2;
+	position: fixed;
+	top: 0px;
+	height: 17%;
+	max-height: 140px;
+	min-height: 90px;
+	width: 100%;
+	background-color: $mid-color-transparent;
+
+	#logo {
+		position: absolute;
+		top: 27%;
+		height: 46%;
+		left: 20px;
+		width: 50%;
+		background-image: url('../img/edited_logo.png');
+		background-repeat: no-repeat;
+	    background-position: 0 center;
+	    background-size: contain;
+	}
+
+
+	nav {
+		ul {
+			list-style-type: none;
+			position: absolute;
+			top: 43%;
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;
+			color: $dark-color;
+
+			li {
+				@include nav-link-style;
+				float: left;
+
+				a:hover {
+					text-decoration: none;
+					color: $light-color !important;
+				}
+			}
+		}
+	}
+
+	#nav-right ul {
+		right: 20px;
+	}
+
+	#nav-left ul {
+		left: 20px;
+	}
+
+}
+
+
+#main {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	top: 20%;
+	width: 100%;
+
+	#welcome {
+		padding: 0 40px;
+		margin: 0;
+
+		h2 {
+			margin-top: 10px;
+		}
+	}
+
+	#submit-work {
+		width: 100%;
+		text-align: center;
+	}
+
+	#documents {
+		margin: 60px 40px;
+		padding: 20px 20px 20px 20px;
+		@include inside-border(2px, $light-color);
+		background-color: $dark-color-transparent;
+		color: $light-color;
+		text-align: left;
+		overflow: auto;
+
+		#my-documents {
+			margin-top:0;
+			margin-left: 10px;
+		}
+
+		.document {
+			float: left;
+			margin:10px;
+
+			width: 300px;
+			min-height: 400px;
+			background-color: $light-color;
+			@include inside-border(1px, $dark-color);
+
+			a:hover {
+				color: $mid-color !important;
+			}
+
+			iframe#viewer {
+				margin: 0 auto 10px auto;
+				border: none;
+			}
+
+			.doc-data {
+				padding: 10px;
+				font-size: .5 em;
+
+			}
+		}
+
+	}
+
+	#writer-upload {
+
+		#tagline {
+			width: 100%;
+			text-align: center;
+		}
+
+		.form-container {
+
+			width: 50%;
+			margin: 0 auto;
+
+			input{
+				background-color: $dark-color-transparent;
+				border: none;
+				text-align: left;
+				margin: 10px 0;
+				padding: 20px 10px;
+				font-size: 1em;
+				width: 100%;
+				color: $light-color;
+				font-family: 'Quicksand', sans-serif;
+				font-weight: 300;
+
+				@include inside-border(1px, $mid-color);
+			}
+
+			select {
+				@extend input;
+				padding: 20px 10px;
+				margin: 10px 0;
+			}
+
+			p {
+				width: 50%;
+				text-align: left;
+			}
+
+			.btn {
+				margin-top: 25px;
+			}
+
+			#submit-button {
+				text-align: center;
+			}
+
+
+		}
+	}
+
+}
+
+
+
+.nav-link {
+	@include nav-link-style;
+}
+
+
+/* css trick for anchor link to load beneath the fixed header 
+(i.e. not be covered by the header) */
+.anchor {
+  display: block;
+  position: relative;
+  top: -230px;
+  visibility: hidden;
+}
+
+
+
+footer {
+	position: absolute;
+	height: 50px;
+	bottom: 50px;
+	width: 100%;
+	text-align: center;
+}
+
+
+
+
+@media only screen and (max-width: 800px) {
+
+	div.form-container {
+		width: 90% !important;
+		padding: 10px;
+	}
+
+	#documents {
+		width: 100% !important;
+		margin: 60px 0 !important;
+
+	}
+
+
+}
+
+
+
