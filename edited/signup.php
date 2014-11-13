@@ -46,7 +46,10 @@
 				</div>
 
 				<div class="form-container">
-					<form id="signup-form" method="post" action="submit.php">
+					<form id="signup-form" method="post" action="signup-process.php">
+						<!--redirect value-->
+						<input type="hidden" name="redirect_to" value ="writer.html">
+
 						<input type="text" name="f-name" value="first name">
 						<input type="text" name="l-name" value="last name"><br>
 						<input type="text" name="email" value="e-mail"><br>

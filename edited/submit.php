@@ -1,29 +1,70 @@
-<?php
+<!DOCTYPE html>
 
-	$server = 'localhost';
-	$user_name = 'root';
-	$password = 'root';
-	$database = 'edited';
+<html>
 
-	// Create connection
-	$conn = new mysqli($server, $user_name, $password, $database);
-	// Check connection
-	if ($conn->connect_error) {
-    	die("Connection failed: " . $conn->connect_error);
-	} 
+	<head>
+		<title>Upload to edited.io</title>
 
-	$first_name = $_POST['f-name'];
-	$last_name = $_POST['l-name'];
-	$email = $_POST['email'];
-	$password = $_POST['password'];
+		<meta charset="UTF-8">
+		<meta type="description" content="the writer upload page of the edited.io social platform">
+		<meta type="keywords" content="writing,writer,editing,editor,freelance,social">
 
-	$sql = "INSERT INTO writers (first_name, last_name, email, password) VALUES ('$first_name', '$last_name', '$email', '$password')";
+		<link rel="stylesheet" href="style/portal.css">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel='stylesheet' type='text/css'>
 
-	if ($conn->query($sql) === TRUE) {
-		echo "New record created successfully";
-	} else {
-		echo "Error: " . $sql . "<br>" . $conn->error;
-	}
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+	</head>
 
-	$conn->close();
-?>
+	<body>
+
+		<section id="header">
+
+				<a href="writer.html#top">
+					<div id="logo"></div>
+				</a>
+
+				<nav id="nav-right">
+					<ul>
+						<li><a href="index.html">log out</a></li>
+					</ul>
+				</nav>
+
+		</section>
+
+		<section id="main">
+
+			<div id="writer-upload">
+
+				<div id="tagline">
+					<h2>Submit your writing to be edited.</h2>
+				</div>
+
+				<div class="form-container">
+					<form id="signup-form" method="link" action="writer.html">
+						<input type="text" name="doc-name" value="document title"><br>
+						<label for="doc-deadline">Edit deadline:</label>
+						<input type="date" name="doc-deadline" value="editing deadline (MM/DD/YY)"><br>
+						<label for="doc-type">Type of edit:</label>
+						<select name="doc-type" value="type of edit">
+							<option value="line-edit">Line Edit</option>
+							<option value="proofread">Proofread</option>
+							<option value="struc-edit">Structural Edit</option>
+							<option value="fact-check">Fact Check</option>
+						</select><br>
+						<label for="fileselect">Files to upload:</label>
+						<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+						<div id="submit-button">
+							<button class="btn" id="submit-btn">submit document</button>
+						</div>
+					</form>
+				</div>
+				
+			</div>
+
+		</section>
+
+	</body>
+
+</html>
