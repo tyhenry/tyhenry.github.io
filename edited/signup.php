@@ -17,6 +17,67 @@
 
 	<body>
 
+
+	<?php
+		// define variables and set to empty values
+		$fnameErr = $lnameErr = $emailErr = $passwordErr = "";
+		$fname = "first name*";
+		$lname = "last name*";
+		$email = "e-mail*";
+		$password = "password*";
+
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+		   if (empty($_POST["f-name"])) {
+		     $nameErr = "First name is required";
+		   } else {
+		     $fname = test_input($_POST["f-name"]);
+		     // check if name only contains letters and whitespace
+		     if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
+		       $fnameErr = "Only letters and whitespace allowed"; 
+		     }
+		   }
+
+		   if (empty($_POST["l-name"])) {
+		     $lnameErr = "Last name is required";
+		   } else {
+		     $lname = test_input($_POST["l-name"]);
+		     // check if name only contains letters and whitespace
+		     if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
+		       $lnameErr = "Only letters and whitespace allowed"; 
+		     }
+		   }
+		   
+		   if (empty($_POST["email"])) {
+		     $emailErr = "Email is required";
+		   } else {
+		     $email = test_input($_POST["email"]);
+		     // check if e-mail address is well-formed
+		     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		       $emailErr = "Invalid email format"; 
+		     }
+		   }
+
+		   if (empty($_POST["password"])) {
+		     $passwordErr = "Password is required";
+		   } else {
+		     $password = test_input($_POST["password"]);
+		     // check if name only contains letters and whitespace
+		     if (!preg_match("/^(?=.*\d.*\d)[0-9A-Za-z!@#$%*]{8,}$/",$password)) {
+		       $nameErr = "Must have a minimum of 8 characters, 2 numbers, and the following characters: ! @ # $ % *"; 
+		     }
+		   }
+
+		}
+
+		function test_input($data) {
+		   $data = trim($data);
+		   $data = stripslashes($data);
+		   $data = htmlspecialchars($data);
+		   return $data;
+		}
+	?>
+
 		<div class="cover-bg-ernest"></div>
 
 
@@ -46,14 +107,15 @@
 				</div>
 
 				<div class="form-container">
-					<form id="signup-form" method="post" action="signup-process.php">
+					<!--form id="signup-form" method="post" action="signup-process.php"-->
+					<form id="signup-form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 						<!--redirect value-->
 						<input type="hidden" name="redirect_to" value ="writer.html">
 
-						<input type="text" name="f-name" value="first name">
-						<input type="text" name="l-name" value="last name"><br>
-						<input type="text" name="email" value="e-mail"><br>
-						<input type="password" name="password" value="password"><br>
+						<input type="text" name="f-name" value="<?php echo $fname;?>"><span class="error"><?php echo $fnameErr;?></span>
+						<input type="text" name="l-name" value="<?php echo $lname;?>"><br><span class="error"><?php echo $lnameErr;?></span>
+						<input type="text" name="email" value="<?php echo $email;?>"><br><span class="error"><?php echo $emailErr;?></span>
+						<input type="password" name="password" value="<?php echo $password;?>"><br><span class="error"><?php echo $passwordErr;?></span>
 						<input type="submit" name="submit" value="sign up" class="btn" id="signup-button">
 						<!--<button class="btn" id="signup-button">sign up</button>-->
 					</form>

@@ -25,19 +25,21 @@
 	$edit_type = $_POST['doc-type'];
 
 	$targetfolder = "uploads/";
-	$targetfolder = $targetfolder . basename( $_FILES['file']['name']) ;
+	$targetfile = $targetfolder . basename( $_FILES['file']['name']) ;
 
 	$sql = "INSERT INTO documents (title, deadline, edit_type) VALUES ('$title', '$deadline', '$edit_type')";
-
-	$ok=1;
 
 	$file_type=$_FILES['file']['type'];
  
  	//test to make sure file type is pdf
 	if ($file_type=="application/pdf"){
 
+		if ($_FILES["fileToUpload"]["size"] > 20000000) {
+		    echo "Sorry, your file is too large.";
+		}
+
 		//upload the pdf and test if successful
-		if(move_uploaded_file($_FILES['file']['tmp_name'], $targetfolder)){
+		if(move_uploaded_file($_FILES['file']['tmp_name'], $targetfile)){
 			/*echo "The file ". basename( $_FILES['file']['name']). " is uploaded";*/
 
 				//if file upload worked, insert the form info in mysql

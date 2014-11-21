@@ -361,11 +361,14 @@ hr {
 
 
 footer {
-	position: absolute;
+
+	display:none;
+
+	/*position: absolute;
 	height: 50px;
 	bottom: 50px;
 	width: 100%;
-	text-align: center;
+	text-align: center;*/
 }
 
 
@@ -373,13 +376,13 @@ footer {
 
 
 
-	div.form-container {
-		width: 100% !important;
+	#splash #splash-content .form-container {
+		width: 100%;
 		margin: 0;
 		padding: 0;
 		
 		[name="f-name"], [name="l-name"] {
-			width: 100% !important;
+			width: 100%;
 		}
 	}
 
@@ -388,41 +391,47 @@ footer {
 	}
 
 
-	#logo {
-		position: absolute;
-		top: 27% !important;
-		height: 46% !important;
-		left: 20px !important;
-		width: 50% !important;
-	    background-position: 0 center !important;
-	}
-
-	nav ul {
-
-		top: 25% !important;
-
-		li {
-			clear: both !important;
+	#header {
+		 #logo {
+			position: absolute;
+			top: 27%;
+			height: 46%;
+			left: 20px;
+			width: 50%;
+		    background-position: 0 center;
 		}
+
+		nav ul {
+
+			top: 25%;
+
+			li {
+				clear: both;
+			}
+		}
+
 	}
 
 	#about {
 		top: 150%;
 
 		#about-box {
-			width: 96% !important;
-			margin: 0 auto !important;
-			padding: 0 !important;
+			width: 96%;
+			margin: 0 auto;
+			padding: 0;
 
-			.about-section-title {
-				width: 100% !important;
-			}
-			.about-section-content {
-				width: 100% !important;
+			.about-section {
+
+				.about-section-title {
+					width: 100%;
+				}
+				.about-section-content {
+					width: 100%;
+				}
 			}
 
 			figure img {
-				width: 100% !important;
+				width: 100%;
 
 			}
 		}

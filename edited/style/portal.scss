@@ -313,15 +313,17 @@ footer {
 
 @media only screen and (max-width: 800px) {
 
-	div.form-container {
-		width: 90% !important;
-		padding: 10px;
-	}
+	#main{
 
-	#documents {
-		width: 100% !important;
-		margin: 60px 0 !important;
+		#writer-upload .form-container {
+			width: 90%;
+			padding: 10px;
+		}
 
+		#documents {
+			width: 100%;
+			margin: 60px 0;
+		}
 	}
 
 
