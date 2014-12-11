@@ -1,0 +1,475 @@
+/*fonts*/
+$font-stack: 'Open Sans', sans-serif;
+$fancy-font: 'Quicksand', sans-serif;
+
+/*color scheme*/
+$dark-color: #111111;
+$dark-color-transparent: rgba(17, 17, 17, 0.7);
+$mid-color: #a1a1a1;
+$mid-color-transparent: rgba(161, 161, 161, 0.7);
+$light-color: #ebebeb;
+$cta-color: #83ca8e;
+$cta-dark-color: #70ad7a;
+
+
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+/*inside-border uses box-shadow to create an internal border*/
+@mixin inside-border($width, $color){
+  -webkit-box-shadow: 0 0 0 $width $color;
+     -moz-box-shadow: 0 0 0 $width $color; 
+      -ms-box-shadow: 0 0 0 $width $color; 
+          box-shadow: 0 0 0 $width $color; 
+}
+
+@mixin nav-link-style{
+	display: inline;
+	margin: 0;
+	padding: 0 10px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+
+html {
+	/*I know we're not meant to style the html tag 
+	but it's the only way I could get the full width/height layout
+	to work! Sorry...*/
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font: 1.2em $font-stack;
+	color: $dark-color;
+	background-color: $light-color;
+}
+
+h1 {
+	font-size: 2.2em;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+
+h3 {
+	font-size: 1.2em;
+}
+
+a {
+	text-decoration: none;
+	color: $dark-color;
+
+	&:hover {
+		color: $light-color;
+	}
+}
+
+hr {
+	border: 1px solid $mid-color;
+}
+
+/*button class for button divs and buttons*/
+.btn {
+	display: inline-block;
+	margin: 0 10px;
+	padding: 15px 25px 15px 29px;
+	color: $light-color;
+	background-color: $cta-dark-color;
+	text-transform: uppercase;
+	font-size: 1.1em;
+	letter-spacing: 2px;
+	border: none;
+	@include border-radius (40px);
+	opacity: 0.7;
+	cursor: pointer;
+
+	&:hover {
+		@include inside-border (1px, $dark-color);
+		text-decoration: none;
+		background-color: $dark-color;
+		color: $cta-dark-color;
+	}
+
+	&:active {
+		@include inside-border (2px, $light-color);
+		color: $light-color;
+	}
+}
+
+
+.logo {
+	font-family: $fancy-font;
+	font-weight: 400;
+	text-transform: lowercase;
+}
+
+
+.cover-bg {
+	z-index: 0;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+
+.cover-bg-maya {
+	@extend .cover-bg;
+	background-image: url('../img/maya_bg2.jpg');
+}
+
+.cover-bg-ernest {
+	@extend .cover-bg;
+	background-image: url('../img/ernest_bg.jpg');
+}
+
+.cover-bg-ernest2 {
+	@extend .cover-bg;
+	background-image: url('../img/ernest_bg2.jpg');
+}
+
+.cover-bg-james {
+	@extend .cover-bg;
+	background-image: url('../img/james_bg.jpg');
+}
+
+.cover-bg-vladimir {
+	@extend .cover-bg;
+	background-image: url('../img/vladimir_bg.jpg');
+}
+
+.cover-bg-michel {
+	@extend .cover-bg;
+	background-image: url('../img/michel_bg.jpg');
+}
+
+
+
+
+#header {
+	z-index: 2;
+	position: fixed;
+	top: 0px;
+	height: 17%;
+	max-height: 140px;
+	min-height: 90px;
+	width: 100%;
+
+	/*css trick to get semi-transparent bg*/
+	&:after {
+		background-size: cover;
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-position: center top;
+
+		opacity: 0.9;
+
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		position: absolute;
+		z-index: -1;
+		content: "";
+	}
+
+	#logo {
+		position: absolute;
+		top: 22%;
+		height: 56%;
+		left: 25%;
+		width: 50%;
+		background-image: url('../img/edited_logo.png');
+		background-repeat: no-repeat;
+	    background-position: center center;
+	    background-size: contain;
+
+	}
+
+
+	nav {
+		ul {
+			list-style-type: none;
+			position: absolute;
+			top: 43%;
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;
+			color: $dark-color;
+
+			li {
+				@include nav-link-style;
+				float: left;
+
+				a:hover {
+					text-decoration: none;
+					color: $cta-dark-color !important;
+				}
+			}
+		}
+	}
+
+	#nav-right ul {
+		right: 10%;
+	}
+
+	#nav-left ul {
+		left: 10%;
+	}
+
+}
+
+/*css trick to get semi-transparent bg on #header... see below*/
+.bg-maya:after {
+	background-image: url('../img/maya_bg2.jpg');
+}
+
+.bg-ernest:after {
+	background-image: url('../img/ernest_bg.jpg');
+}
+
+.bg-ernest2:after {
+	background-image: url('../img/ernest_bg2.jpg');
+}
+
+.bg-james:after {
+	background-image: url('../img/james_bg.jpg');
+}
+
+.bg-vladimir:after {
+	background-image: url('../img/vladmir_bg.jpg');
+}
+
+.bg-michel:after {
+	background-image: url('../img/michel_bg.jpg');
+}
+
+
+#splash {
+	position: absolute;
+
+	top: 40%;
+
+	width: 90%;
+	left: 5%;
+
+	overflow: visible;
+
+	#splash-content {
+
+		position: relative;
+		top: -75px;
+
+		#tagline {
+			text-align: center;
+		}
+		#sign-up {
+			text-align: center;
+		}
+		.form-container {
+			text-align: center;
+			width: 50%;
+			margin: 0 auto;
+
+			input{
+				background-color: $dark-color-transparent;
+				border: none;
+				text-align: center;
+				margin: 5px 0 10px 0;
+				padding: 15px 0;
+				font-size: 1em;
+				width: 100%;
+				color: $light-color;
+				font-family: 'Quicksand', sans-serif;
+				font-weight: 300;
+
+				@include inside-border(1px, $mid-color);
+			}
+			[name="f_name"], [name="l_name"] {
+				width: 49%;
+			}
+
+			.btn {
+				margin-top: 25px;
+			}
+		}
+	}
+
+}
+
+
+
+#about {
+	z-index: 1;
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+
+	#about-box {
+	position: relative;
+	top: -90px;
+	width: 90%;
+	margin: 0 auto;
+	padding: 20px 5%;
+	background-color: $mid-color-transparent;
+	/*@include inside-border (1px, $light-color);*/
+
+		#about-header {
+			margin-top: 0;
+			color: $light-color;
+		}
+
+		#about-header:hover {
+			color: $cta-dark-color;
+		}
+
+		#about-signup {
+			display: inline;
+		}
+
+		.about-section {
+			@include inside-border(1px, $dark-color);
+			padding: 15px;
+			margin: 40px 0;
+			background-color: $dark-color-transparent;
+			color: $light-color;
+			overflow: auto;
+
+
+			.about-section-title {
+				float: left;
+				display: inline-block;
+				width: 17%;
+				min-width: 140px;
+				text-align: center;
+				padding: 10px;
+				text-transform: uppercase;
+				color: $cta-dark-color;
+			}
+
+			.about-section-content {
+				float: left;
+				width: 75%;
+				display: inline-block;
+				text-align: left;
+				padding: 10px;
+			}
+		}
+	}
+}
+
+.nav-link {
+	@include nav-link-style;
+}
+
+
+/* css trick for anchor link to load beneath the fixed header 
+(i.e. not be covered by the header) */
+.anchor {
+  display: block;
+  position: relative;
+  top: -230px;
+  visibility: hidden;
+}
+
+
+
+footer {
+
+	display:none;
+
+	/*position: absolute;
+	height: 50px;
+	bottom: 50px;
+	width: 100%;
+	text-align: center;*/
+}
+
+
+@media only screen and (max-width: 800px) {
+
+
+
+	#splash #splash-content .form-container {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		
+		[name="f_name"], [name="l_name"] {
+			width: 100% !important;
+		}
+	}
+
+	footer {
+		display: none;
+	}
+
+
+	#header {
+		 #logo {
+			position: absolute;
+			top: 27%;
+			height: 46%;
+			left: 20px;
+			width: 50%;
+		    background-position: 0 center;
+		}
+
+		nav ul {
+
+			top: 25%;
+
+			li {
+				clear: both;
+			}
+		}
+
+	}
+
+	#about {
+		top: 150%;
+
+		#about-box {
+			width: 96%;
+			margin: 0 auto;
+			padding: 0;
+
+			.about-section {
+
+				.about-section-title {
+					width: 100%;
+				}
+				.about-section-content {
+					width: 100%;
+				}
+			}
+
+			figure img {
+				width: 100%;
+
+			}
+		}
+	}
+
+
+}
+
+
+
+
+
+

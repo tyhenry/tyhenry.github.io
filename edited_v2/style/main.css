@@ -1,0 +1,319 @@
+/*fonts*/
+/*color scheme*/
+/*inside-border uses box-shadow to create an internal border*/
+html {
+  /*I know we're not meant to style the html tag 
+  but it's the only way I could get the full width/height layout
+  to work! Sorry...*/
+  height: 100%; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font: 1.2em "Open Sans", sans-serif;
+  color: #111111;
+  background-color: #ebebeb; }
+
+h1 {
+  font-size: 2.2em; }
+
+h2 {
+  font-size: 1.5em; }
+
+h3 {
+  font-size: 1.2em; }
+
+a {
+  text-decoration: none;
+  color: #111111; }
+  a:hover {
+    color: #ebebeb; }
+
+hr {
+  border: 1px solid #a1a1a1; }
+
+/*button class for button divs and buttons*/
+.btn {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 15px 25px 15px 29px;
+  color: #ebebeb;
+  background-color: #70ad7a;
+  text-transform: uppercase;
+  font-size: 1.1em;
+  letter-spacing: 2px;
+  border: none;
+  -webkit-border-radius: 40px;
+  -moz-border-radius: 40px;
+  -ms-border-radius: 40px;
+  border-radius: 40px;
+  opacity: 0.7;
+  cursor: pointer; }
+  .btn:hover {
+    -webkit-box-shadow: 0 0 0 1px #111111;
+    -moz-box-shadow: 0 0 0 1px #111111;
+    -ms-box-shadow: 0 0 0 1px #111111;
+    box-shadow: 0 0 0 1px #111111;
+    text-decoration: none;
+    background-color: #111111;
+    color: #70ad7a; }
+  .btn:active {
+    -webkit-box-shadow: 0 0 0 2px #ebebeb;
+    -moz-box-shadow: 0 0 0 2px #ebebeb;
+    -ms-box-shadow: 0 0 0 2px #ebebeb;
+    box-shadow: 0 0 0 2px #ebebeb;
+    color: #ebebeb; }
+
+.logo {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 400;
+  text-transform: lowercase; }
+
+.cover-bg, .cover-bg-maya, .cover-bg-ernest, .cover-bg-ernest2, .cover-bg-james, .cover-bg-vladimir, .cover-bg-michel {
+  z-index: 0;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center top; }
+
+.cover-bg-maya {
+  background-image: url("../img/maya_bg2.jpg"); }
+
+.cover-bg-ernest {
+  background-image: url("../img/ernest_bg.jpg"); }
+
+.cover-bg-ernest2 {
+  background-image: url("../img/ernest_bg2.jpg"); }
+
+.cover-bg-james {
+  background-image: url("../img/james_bg.jpg"); }
+
+.cover-bg-vladimir {
+  background-image: url("../img/vladimir_bg.jpg"); }
+
+.cover-bg-michel {
+  background-image: url("../img/michel_bg.jpg"); }
+
+#header {
+  z-index: 2;
+  position: fixed;
+  top: 0px;
+  height: 17%;
+  max-height: 140px;
+  min-height: 90px;
+  width: 100%;
+  /*css trick to get semi-transparent bg*/ }
+  #header:after {
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center top;
+    opacity: 0.9;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: -1;
+    content: ""; }
+  #header #logo {
+    position: absolute;
+    top: 22%;
+    height: 56%;
+    left: 25%;
+    width: 50%;
+    background-image: url("../img/edited_logo.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain; }
+  #header nav ul {
+    list-style-type: none;
+    position: absolute;
+    top: 43%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: #111111; }
+    #header nav ul li {
+      display: inline;
+      margin: 0;
+      padding: 0 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      float: left; }
+      #header nav ul li a:hover {
+        text-decoration: none;
+        color: #70ad7a !important; }
+  #header #nav-right ul {
+    right: 10%; }
+  #header #nav-left ul {
+    left: 10%; }
+
+/*css trick to get semi-transparent bg on #header... see below*/
+.bg-maya:after {
+  background-image: url("../img/maya_bg2.jpg"); }
+
+.bg-ernest:after {
+  background-image: url("../img/ernest_bg.jpg"); }
+
+.bg-ernest2:after {
+  background-image: url("../img/ernest_bg2.jpg"); }
+
+.bg-james:after {
+  background-image: url("../img/james_bg.jpg"); }
+
+.bg-vladimir:after {
+  background-image: url("../img/vladmir_bg.jpg"); }
+
+.bg-michel:after {
+  background-image: url("../img/michel_bg.jpg"); }
+
+#splash {
+  position: absolute;
+  top: 40%;
+  width: 90%;
+  left: 5%;
+  overflow: visible; }
+  #splash #splash-content {
+    position: relative;
+    top: -75px; }
+    #splash #splash-content #tagline {
+      text-align: center; }
+    #splash #splash-content #sign-up {
+      text-align: center; }
+    #splash #splash-content .form-container {
+      text-align: center;
+      width: 50%;
+      margin: 0 auto; }
+      #splash #splash-content .form-container input {
+        background-color: rgba(17, 17, 17, 0.7);
+        border: none;
+        text-align: center;
+        margin: 5px 0 10px 0;
+        padding: 15px 0;
+        font-size: 1em;
+        width: 100%;
+        color: #ebebeb;
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 300;
+        -webkit-box-shadow: 0 0 0 1px #a1a1a1;
+        -moz-box-shadow: 0 0 0 1px #a1a1a1;
+        -ms-box-shadow: 0 0 0 1px #a1a1a1;
+        box-shadow: 0 0 0 1px #a1a1a1; }
+      #splash #splash-content .form-container [name="f_name"], #splash #splash-content .form-container [name="l_name"] {
+        width: 49%; }
+      #splash #splash-content .form-container .btn {
+        margin-top: 25px; }
+
+#about {
+  z-index: 1;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  text-align: center; }
+  #about #about-box {
+    position: relative;
+    top: -90px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 5%;
+    background-color: rgba(161, 161, 161, 0.7);
+    /*@include inside-border (1px, $light-color);*/ }
+    #about #about-box #about-header {
+      margin-top: 0;
+      color: #ebebeb; }
+    #about #about-box #about-header:hover {
+      color: #70ad7a; }
+    #about #about-box #about-signup {
+      display: inline; }
+    #about #about-box .about-section {
+      -webkit-box-shadow: 0 0 0 1px #111111;
+      -moz-box-shadow: 0 0 0 1px #111111;
+      -ms-box-shadow: 0 0 0 1px #111111;
+      box-shadow: 0 0 0 1px #111111;
+      padding: 15px;
+      margin: 40px 0;
+      background-color: rgba(17, 17, 17, 0.7);
+      color: #ebebeb;
+      overflow: auto; }
+      #about #about-box .about-section .about-section-title {
+        float: left;
+        display: inline-block;
+        width: 17%;
+        min-width: 140px;
+        text-align: center;
+        padding: 10px;
+        text-transform: uppercase;
+        color: #70ad7a; }
+      #about #about-box .about-section .about-section-content {
+        float: left;
+        width: 75%;
+        display: inline-block;
+        text-align: left;
+        padding: 10px; }
+
+.nav-link {
+  display: inline;
+  margin: 0;
+  padding: 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px; }
+
+/* css trick for anchor link to load beneath the fixed header 
+(i.e. not be covered by the header) */
+.anchor {
+  display: block;
+  position: relative;
+  top: -230px;
+  visibility: hidden; }
+
+footer {
+  display: none;
+  /*position: absolute;
+  height: 50px;
+  bottom: 50px;
+  width: 100%;
+  text-align: center;*/ }
+
+@media only screen and (max-width: 800px) {
+  #splash #splash-content .form-container {
+    width: 100%;
+    margin: 0;
+    padding: 0; }
+    #splash #splash-content .form-container [name="f_name"], #splash #splash-content .form-container [name="l_name"] {
+      width: 100% !important; }
+
+  footer {
+    display: none; }
+
+  #header #logo {
+    position: absolute;
+    top: 27%;
+    height: 46%;
+    left: 20px;
+    width: 50%;
+    background-position: 0 center; }
+  #header nav ul {
+    top: 25%; }
+    #header nav ul li {
+      clear: both; }
+
+  #about {
+    top: 150%; }
+    #about #about-box {
+      width: 96%;
+      margin: 0 auto;
+      padding: 0; }
+      #about #about-box .about-section .about-section-title {
+        width: 100%; }
+      #about #about-box .about-section .about-section-content {
+        width: 100%; }
+      #about #about-box figure img {
+        width: 100%; } }
+
+/*# sourceMappingURL=main.css.map */
